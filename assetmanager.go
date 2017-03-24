@@ -1,6 +1,7 @@
 package assetmanager
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -196,4 +197,10 @@ func (manager *AssetManager) MergeAndRunReplacer(asset *AssetManager) *AssetMana
 		}
 	}
 	return manager
+}
+
+// File io.Reader implement
+func (manager *AssetManager) File(name string) (*bytes.Buffer, error) {
+	b, e := manager.Get(name)
+	return bytes.NewBuffer(b), e
 }

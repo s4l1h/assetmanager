@@ -2,12 +2,25 @@ package assetmanager_test
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 	"testing"
 
 	"github.com/akmyazilim/assetmanager"
 )
 
+func ExampleAssetManager_File() {
+
+	asset := assetmanager.New()
+	asset.AddDir("./test")
+	buffer, err := asset.File("test/index.html")
+	if err != nil {
+		fmt.Println(err)
+	}
+	r, _ := ioutil.ReadAll(buffer)
+	fmt.Println(string(r))
+	// Output: index.html
+}
 func ExampleAssetManager_AddReplacer() {
 	asset := assetmanager.New()
 	// Add Replacer
