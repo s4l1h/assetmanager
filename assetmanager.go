@@ -19,7 +19,7 @@ type AssetManager struct {
 	Replacers     map[string]ReplaceFunc
 }
 
-// New new asset manager
+// New asset manager
 func New() *AssetManager {
 	return &AssetManager{
 		Files:         make(map[string][]byte),
@@ -189,7 +189,7 @@ func (manager *AssetManager) Merge(asset *AssetManager) *AssetManager {
 	return manager
 }
 
-// MergeAndRunReplacer another assetmanager
+// MergeAndRunReplacer merge another assetmanager and run replacer
 func (manager *AssetManager) MergeAndRunReplacer(asset *AssetManager) *AssetManager {
 	if len(asset.Files) != 0 {
 		for name, file := range asset.Files {
