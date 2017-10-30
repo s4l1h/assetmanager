@@ -14,7 +14,7 @@ var Asset *assetmanager.AssetManager
 
 func init() {
 
-	_, file, _, _ := runtime.Caller(1)
+	_, file, _, _ := runtime.Caller(0)
 	// Get Full package dir
 	path := filepath.Dir(file)
 	views := fmt.Sprintf("%s/views", path)
