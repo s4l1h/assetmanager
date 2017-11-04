@@ -143,15 +143,16 @@ func (manager *AssetManager) AddDir(dirs ...string) {
 	fileList := []string{}
 	for _, dir := range dirs {
 		//logrus.Warn("Add Dir", dir)
-		filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
-			if !f.IsDir() {
-				//logrus.Warnf("Add File %s ", path)
-				fileList = append(fileList, path)
-			}
-			return nil
-		})
+		if _, err := os.Stat(dir); err == nil {
+			filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
+				if !f.IsDir() {
+					//logrus.Warnf("Add File %s ", path)
+					fileList = append(fileList, path)
+				}
+				return nil
+			})
+		}
 	}
-
 	manager.AddFile(fileList...)
 	//logrus.Warn(fileList)
 }
