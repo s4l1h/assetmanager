@@ -8,8 +8,7 @@ import (
 	"github.com/akmyazilim/assetmanager/assetfs"
 )
 
-// Before buildling, run go generate.
-// Then, run the main program and visit http://localhost:8080/public/hello.txt
+// Then, run the main program and visit http://localhost:8080/static/views/ or http://localhost:8080/all/views/
 func main() {
 
 	// Create new asset manager
