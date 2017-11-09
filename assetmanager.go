@@ -127,13 +127,29 @@ func (manager *AssetManager) AddFileString(name, content string) {
 	}
 }
 
+// Delete file from manager
+func (manager *AssetManager) Delete(name string) {
+	manager.delete(name)
+}
+
+func (manager *AssetManager) delete(name string) {
+	delete(manager.Files, name)
+}
+
 func (manager *AssetManager) add(name string, content []byte) {
 	//logrus.Warn(len(manager.Replacers))
 	if len(manager.Replacers) != 0 {
+		newName := name
 		for _, replacer := range manager.Replacers {
 			//logrus.Warnf("%T", replacer)
-			name = replacer(name)
+			newName = replacer(newName)
 		}
+		// if name is empty remove from files
+		if newName == "" {
+			manager.Delete(name)
+			return
+		}
+		name = newName
 	}
 	manager.Files[name] = content
 }
@@ -155,6 +171,21 @@ func (manager *AssetManager) AddDir(dirs ...string) {
 	}
 	manager.AddFile(fileList...)
 	//logrus.Warn(fileList)
+}
+
+// Copy assetmanager
+func (manager *AssetManager) Copy(from *AssetManager) {
+	files := from.GetAll()
+	if len(files) > 0 {
+		for name, content := range files {
+			manager.add(name, content)
+		}
+	}
+}
+
+// GetAll files
+func (manager *AssetManager) GetAll() map[string][]byte {
+	return manager.Files
 }
 
 // Get get file

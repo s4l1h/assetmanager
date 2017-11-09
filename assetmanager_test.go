@@ -236,3 +236,59 @@ func TestAddDir(t *testing.T) {
 		t.Error("GetString need return empty")
 	}
 }
+func TestDelete(t *testing.T) {
+
+	asset := assetmanager.New()
+	file := "index.html"
+	content := "index.html file content"
+	asset.AddFileString(file, content)
+	if !asset.Exists(file) {
+		t.Errorf("File Not Found %s", file)
+	}
+	asset.Delete(file)
+	if asset.Exists(file) {
+		t.Errorf("Delete error %s", file)
+	}
+
+}
+
+func TestCopy(t *testing.T) {
+
+	asset := assetmanager.New()
+	file := "index.html"
+	content := "index.html file content"
+	asset.AddFileString(file, content)
+
+	assetCopy := assetmanager.New()
+	assetCopy.Copy(asset)
+
+	if !asset.Exists(file) {
+		t.Errorf("File Not Found %s", file)
+	}
+	if !assetCopy.Exists(file) {
+		t.Errorf("asset copy error File Not Found %s", file)
+	}
+
+}
+func TestEmptyNameReplacer(t *testing.T) {
+
+	file := "index.html"
+	content := "index.html file content"
+
+	asset := assetmanager.New()
+
+	// Add Replacer
+	asset.AddReplacer("testReplacer", func(name string) string {
+		if name == file {
+			return "" // empt
+		}
+		return name
+	})
+
+	asset.AddFileString(file, content)
+
+	if asset.Exists(file) {
+		t.Errorf("Empty Name Replacer Error File Found %s", file)
+	}
+
+}
