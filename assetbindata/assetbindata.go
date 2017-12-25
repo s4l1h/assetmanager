@@ -1,4 +1,4 @@
-package assetmanager
+package assetbindata
 
 import (
 	"bytes"
@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+
+	"github.com/akmyazilim/assetmanager"
 )
 
 // GUnzipData file
@@ -54,7 +56,7 @@ func GZipData(data []byte) (compressedData []byte, err error) {
 }
 
 // Compress assetmanager
-func Compress(asset *AssetManager) []byte {
+func Compress(asset *assetmanager.AssetManager) []byte {
 	jsonData := EncodeJSON(asset)
 	res, err := GZipData(jsonData)
 	if err != nil {
@@ -91,14 +93,14 @@ func MakeWritable(data []byte) *bytes.Buffer {
 }
 
 // EncodeJSON to assetmanager
-func EncodeJSON(asset *AssetManager) []byte {
+func EncodeJSON(asset *assetmanager.AssetManager) []byte {
 	jsonData, _ := json.Marshal(asset.GetAll())
 	return jsonData
 
 }
 
 // DecodeJSON to assetmanager
-func DecodeJSON(d []byte, asset *AssetManager) {
+func DecodeJSON(d []byte, asset *assetmanager.AssetManager) {
 	json.Unmarshal(d, &asset.Files)
 }
 
@@ -106,12 +108,12 @@ func DecodeJSON(d []byte, asset *AssetManager) {
 type GenerateOPT struct {
 	File      string
 	Namespace string
-	Asset     *AssetManager
+	Asset     *assetmanager.AssetManager
 	CacheKey  string
 }
 
 // GeneratedCache assetmanager
-var GeneratedCache = make(map[string]*AssetManager)
+var GeneratedCache = make(map[string]*assetmanager.AssetManager)
 
 // Generate file
 func Generate(opt GenerateOPT) {
@@ -128,6 +130,7 @@ func Generate(opt GenerateOPT) {
 			"fmt"
 		
 			"github.com/akmyazilim/assetmanager"
+			"github.com/akmyazilim/assetmanager/assetbindata"
 		)
 		
 		// AssetManagerGenerated
@@ -141,18 +144,18 @@ func Generate(opt GenerateOPT) {
 		
 		`, opt.Namespace, MakeWritable(data).String())
 	fmt.Fprintf(&qb, `
-			d, err := assetmanager.GUnzipData([]byte(data))
+			d, err := assetbindata.GUnzipData([]byte(data))
 			if err != nil {
 				panic(err)
 			}
 			//fmt.Println(d)
 		
-			assetmanager.DecodeJSON(d, AssetManagerGenerated)
+			assetbindata.DecodeJSON(d, AssetManagerGenerated)
 			//json.Unmarshal(d, &AssetManagerGenerated.Files)
 			//fmt.Println(AssetManagerGenerated.Files)
 			`)
 	fmt.Fprintf(&qb, `
-		assetmanager.GeneratedCache["%s"]=AssetManagerGenerated
+		assetbindata.GeneratedCache["%s"]=AssetManagerGenerated
 		
 		}		`, opt.CacheKey)
 

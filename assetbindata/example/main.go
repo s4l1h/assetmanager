@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/akmyazilim/assetmanager"
+	"github.com/akmyazilim/assetmanager/assetbindata"
 )
 
 var asset *assetmanager.AssetManager
@@ -14,8 +15,8 @@ var asset *assetmanager.AssetManager
 // and call with "go run main.go --build yes"
 func generateAsset() {
 	fmt.Println("generateAsset called")
-	assetmanager.Generate(
-		assetmanager.GenerateOPT{
+	assetbindata.Generate(
+		assetbindata.GenerateOPT{
 			File:      "./generatedAsset.go",
 			Namespace: "main",
 			Asset:     asset,
@@ -29,18 +30,20 @@ func init() {
 	asset = assetmanager.New()
 	// replacer function
 	asset.AddReplacer("renamer", func(name string) string {
-		return strings.Replace(name, "../test/", "", -1)
+		return strings.Replace(name, "../../test/", "", -1)
 	})
 	// add test directory to assetmanager
-	asset.AddDir("../test")
+	asset.AddDir("../../test")
 
-	//fmt.Println(assetmanager.GeneratedCache)
+	fmt.Printf("AssetBindData is %v \n", assetbindata.GeneratedCache)
 	// if assetmanager have cached object use this. (mainAsset)
 	// if have generatedAsset.go file
-	if val, ok := assetmanager.GeneratedCache["mainAsset"]; ok {
-		asset.Copy(val)
+	if val, ok := assetbindata.GeneratedCache["mainAsset"]; ok {
+		fmt.Println("work with binary")
+		asset.Copy(val) // copy cached object to asset
+	} else {
+		fmt.Println("work with files")
 	}
-
 }
 
 func main() {
