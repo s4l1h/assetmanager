@@ -13,6 +13,8 @@ import (
 	"github.com/akmyazilim/assetmanager"
 )
 
+var t = time.Now()
+
 // New assetfs
 func New(manager *assetmanager.AssetManager) http.FileSystem {
 	return &statikFS{manager: manager}
@@ -115,7 +117,7 @@ func (f *httpFile) Mode() os.FileMode {
 }
 
 func (f *httpFile) ModTime() time.Time {
-	return time.Now()
+	return t
 }
 func (f *httpFile) Size() int64 {
 	return int64(len(f.file.data))
