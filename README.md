@@ -1,5 +1,4 @@
-# assetmanager
-AssetManager for Template System
+# Asset Manager
 
 ## pongo2 template loader
 https://github.com/akmyazilim/assetmanager/tree/master/assetmanagerpongo
