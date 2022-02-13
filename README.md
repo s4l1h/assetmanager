@@ -1,4 +1,4 @@
-s4l1h# Asset Manager
+# Asset Manager
 
 ## pongo2 template loader
 https://github.com/s4l1h/assetmanager/tree/master/assetmanagerpongo
