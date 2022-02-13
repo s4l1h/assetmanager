@@ -1,4 +1,4 @@
-package t2
+s4l1hpackage t2
 
 import (
 	"fmt"

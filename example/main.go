@@ -1,4 +1,4 @@
-package main
+s4l1hpackage main
 
 import (
 	"fmt"

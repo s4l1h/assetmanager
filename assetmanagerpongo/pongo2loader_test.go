@@ -1,4 +1,4 @@
-package assetmanagerpongo
+s4l1hpackage assetmanagerpongo
 
 import (
 	"testing"
