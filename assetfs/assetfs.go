@@ -1,4 +1,4 @@
-s4l1hpackage assetfs
+s4l1hs4l1hpackage assetfs
 
 /*
 Thanks Jaana Burcu Doğan https://github.com/rakyll/statik/blob/master/fs/fs.go

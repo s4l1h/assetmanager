@@ -1,4 +1,4 @@
-s4l1hpackage assetbindata
+s4l1hs4l1hpackage assetbindata
 
 import (
 	"bytes"

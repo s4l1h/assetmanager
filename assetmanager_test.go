@@ -1,4 +1,4 @@
-s4l1hpackage assetmanager_test
+s4l1hs4l1hpackage assetmanager_test
 
 import (
 	"fmt"
