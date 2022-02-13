@@ -1,4 +1,4 @@
-s4l1hs4l1hpackage assetmanager_test
+package assetmanager_test
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/akmyazilim/assetmanager"
+	"github.com/s4l1h/assetmanager"
 )
 
 func ExampleAssetManager_File() {

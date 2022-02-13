@@ -1,10 +1,10 @@
-s4l1hs4l1hpackage main
+package main
 
 import (
 	"fmt"
 
-	"github.com/akmyazilim/assetmanager"
-	"github.com/akmyazilim/assetmanager/assetmanagerpongo"
+	"github.com/s4l1h/assetmanager"
+	"github.com/s4l1h/assetmanager/assetmanagerpongo"
 	"github.com/flosch/pongo2"
 )
 

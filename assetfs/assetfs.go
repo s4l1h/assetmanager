@@ -1,4 +1,4 @@
-s4l1hs4l1hpackage assetfs
+package assetfs
 
 /*
 Thanks Jaana Burcu Doğan https://github.com/rakyll/statik/blob/master/fs/fs.go
@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/akmyazilim/assetmanager"
+	"github.com/s4l1h/assetmanager"
 )
 
 var t = time.Now()

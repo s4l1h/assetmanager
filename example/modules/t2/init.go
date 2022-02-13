@@ -1,4 +1,4 @@
-s4l1hs4l1hpackage t2
+package t2
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/akmyazilim/assetmanager"
+	"github.com/s4l1h/assetmanager"
 )
 
 // Asset assetmanager

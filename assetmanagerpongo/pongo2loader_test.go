@@ -1,9 +1,9 @@
-s4l1hs4l1hpackage assetmanagerpongo
+package assetmanagerpongo
 
 import (
 	"testing"
 
-	"github.com/akmyazilim/assetmanager"
+	"github.com/s4l1h/assetmanager"
 	"github.com/flosch/pongo2"
 )
 

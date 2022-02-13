@@ -1,11 +1,11 @@
-s4l1hs4l1hpackage main
+package main
 
 import (
 	"net/http"
 	"strings"
 
-	"github.com/akmyazilim/assetmanager"
-	"github.com/akmyazilim/assetmanager/assetfs"
+	"github.com/s4l1h/assetmanager"
+	"github.com/s4l1h/assetmanager/assetfs"
 )
 
 // Then, run the main program and visit http://localhost:8080/static/views/ or http://localhost:8080/all/views/

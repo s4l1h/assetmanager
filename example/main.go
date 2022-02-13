@@ -1,11 +1,11 @@
-s4l1hs4l1hpackage main
+package main
 
 import (
 	"fmt"
 
-	"github.com/akmyazilim/assetmanager"
-	"github.com/akmyazilim/assetmanager/example/modules/t1"
-	"github.com/akmyazilim/assetmanager/example/modules/t2"
+	"github.com/s4l1h/assetmanager"
+	"github.com/s4l1h/assetmanager/example/modules/t1"
+	"github.com/s4l1h/assetmanager/example/modules/t2"
 )
 
 func main() {

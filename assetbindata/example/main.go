@@ -1,12 +1,12 @@
-s4l1hs4l1hpackage main
+package main
 
 import (
 	"flag"
 	"fmt"
 	"strings"
 
-	"github.com/akmyazilim/assetmanager"
-	"github.com/akmyazilim/assetmanager/assetbindata"
+	"github.com/s4l1h/assetmanager"
+	"github.com/s4l1h/assetmanager/assetbindata"
 )
 
 var asset *assetmanager.AssetManager

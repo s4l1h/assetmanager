@@ -1,4 +1,4 @@
-s4l1hs4l1hpackage assetbindata
+package assetbindata
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/akmyazilim/assetmanager"
+	"github.com/s4l1h/assetmanager"
 )
 
 // GUnzipData file
@@ -129,8 +129,8 @@ func Generate(opt GenerateOPT) {
 		import (
 			"fmt"
 		
-			"github.com/akmyazilim/assetmanager"
-			"github.com/akmyazilim/assetmanager/assetbindata"
+			"github.com/s4l1h/assetmanager"
+			"github.com/s4l1h/assetmanager/assetbindata"
 		)
 		
 		// AssetManagerGenerated
